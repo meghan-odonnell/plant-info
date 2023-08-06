@@ -15,8 +15,7 @@ public class RestPlantAPIService implements PlantAPIService{
     private String apiKey;
 
     RestTemplate restTemplate = new RestTemplate();
-    private final String API_URL = "https://perenual.com/api/species";
-
+    String API_URL = "https://perenual.com/api/species";
 
     @Override
     public List<Plant> getPlants() {
@@ -25,6 +24,8 @@ public class RestPlantAPIService implements PlantAPIService{
 
     @Override
     public PlantDetail getPlantDetailByID(int id) {
-        return null;
+        PlantDetail plantDetail =restTemplate.getForObject(API_URL,PlantDetail.class);
+        System.out.println(plantDetail);
+        return plantDetail;
     }
 }
