@@ -17,13 +17,13 @@ public class PlantController {
     @Autowired
     PlantAPIService service;
 
-    @RequestMapping(path="", method= RequestMethod.GET)
+    @RequestMapping(path="-list?page=1&key={key}", method= RequestMethod.GET)
     public List<Plant>getAllPlants(){
         return service.getPlants();
     }
 
-    @RequestMapping(path="", method=RequestMethod.GET)
-    public PlantDetail getPlantByID(@PathVariable int id){
+    @RequestMapping(path="/details/{id}?key={key}", method=RequestMethod.GET)
+    public PlantDetail getPlantByID(@PathVariable int id, @PathVariable int key){
         return service.getPlantDetailByID(id);
     }
 
